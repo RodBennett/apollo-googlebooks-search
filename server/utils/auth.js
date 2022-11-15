@@ -16,8 +16,10 @@ module.exports = {
     }
 
     if (!token) {
-      return res.status(400).json({ message: 'You have no token!' });
+      // return res.status(400).json({ message: 'You have no token!' });
+      return req;
     }
+
 
     // verify token and get user data out of it
     try {
@@ -25,11 +27,13 @@ module.exports = {
       req.user = data;
     } catch {
       console.log('Invalid token');
-      return res.status(400).json({ message: 'invalid token!' });
+      // return res.status(400).json({ message: 'invalid token!' });
     }
+    // return the request object so it can be passed to resolver as 'context'
+    return req;
 
-    // send to next endpoint
-    next();
+    // send to next endpoint comented out by RB
+    // next();
   },
   signToken: function ({ username, email, _id }) {
     const payload = { username, email, _id };

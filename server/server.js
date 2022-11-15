@@ -1,4 +1,5 @@
 const express = require('express');
+const { authMiddleware } = require('./utils/auth')
 
 // import Apollo Server
 const { ApolloServer } = require('apollo-server-express')
@@ -13,10 +14,11 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // server variable declared to handle tyeDefs and resolvers from /server/schemas
-// const server = new ApolloServer({
-//   typeDefs,
-//   resolvers,
-// });
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context: authMiddleware
+});
 
 // set up 'app' for urlencoded data and json
 app.use(express.urlencoded({ extended: false }));
