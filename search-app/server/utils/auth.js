@@ -32,7 +32,7 @@ module.exports = {
     // return the request object so it can be passed to resolver as 'context'
     return req;
 
-    // send to next endpoint comented out by RB
+    // send to next endpoint commented out by RB
     // next();
   },
   signToken: function ({ username, email, _id }) {
