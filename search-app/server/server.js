@@ -1,18 +1,19 @@
 const express = require('express');
-const { authMiddleware } = require('./utils/auth')
-
 // import Apollo Server
 const { ApolloServer } = require('apollo-server-express')
 const path = require('path');
 const { typeDefs, resolvers } = require('./schemas')
 
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+// authorization middleware for sign in, login
+const { authMiddleware } = require('./utils/auth')
+
 // mongoDB declared in /config/connection
 const db = require('./config/connection');
 
 // const routes = require('./routes'); --- *** THIS LINE IS UNECESSARY
-
-const app = express();
-const PORT = process.env.PORT || 3001;
 
 // server variable declared to handle tyeDefs and resolvers from /server/schemas
 const server = new ApolloServer({
@@ -29,6 +30,10 @@ app.use(express.json());
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
 }
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
 
 // Create a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async (typeDefs, resolvers) => {

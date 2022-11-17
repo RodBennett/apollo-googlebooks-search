@@ -55,7 +55,7 @@ const resolvers = {
     //         }
     //     },
 
-    //     deleteBook: async (parent, { bookId }, context) => {
+    //     removeBook: async (parent, { bookId }, context) => {
     //         if (context.user) {
     //             const deletedBook = await User.findOneAndDelete({
 
