@@ -7,9 +7,6 @@ import SearchBooks from './pages/SearchBooks';
 import SavedBooks from './pages/SavedBooks';
 import Navbar from './components/Navbar';
 
-import  { GET_ME } from './utils/queries'
-
-import { REMOVE_BOOK } from './utils/mutations'; 
 
 const client = new ApolloClient({
   uri: '/graphql',
