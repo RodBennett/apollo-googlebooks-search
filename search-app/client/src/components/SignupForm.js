@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 
-import { createUser } from '../utils/API';
+// import ADD_USER for functionality 
+import { ADD_USER} from '../utils/mutations';
+
+// comment out 'createuser'
+// import { createUser } from '../utils/API';
 import Auth from '../utils/auth';
 
 const SignupForm = () => {

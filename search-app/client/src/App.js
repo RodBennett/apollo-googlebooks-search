@@ -1,8 +1,15 @@
-import React from 'react';
+// import Apollo client server
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SearchBooks from './pages/SearchBooks';
 import SavedBooks from './pages/SavedBooks';
 import Navbar from './components/Navbar';
+import  { GET_ME } from './utils/queries'
+
+
+
+import { REMOVE_BOOK } from './utils/mutations'; 
+
 
 function App() {
   return (

@@ -23,46 +23,46 @@ const resolvers = {
             throw new AuthenticationError('Please login to view your books!');
         },
     },
-    // Mutation: {
-    //     addUser: async (parent, { username, email, password }) => {
-    //         const user = await User.create({ username, email, password });
-    //         const token = signToken(user);
-    //         return { token, user }
-    //     },
-    //     login: async (parent, { email, password }) => {
-    //         const user = await User.findOne({ email });
+    Mutation: {
+        addUser: async (parent, { username, email, password }) => {
+            const user = await User.create({ username, email, password });
+            const token = signToken(user);
+            return { token, user }
+        },
+        login: async (parent, { email, password }) => {
+            const user = await User.findOne({ email });
 
-    //         if (!user) {
-    //             throw new AuthenticationError('Username and password do not match, try again');
-    //         }
+            if (!user) {
+                throw new AuthenticationError('Username and password do not match, try again');
+            }
 
-    //         const correctPw = await user.isCorrectPassword(password)
+            const correctPw = await user.isCorrectPassword(password)
 
-    //         if (!correctPw) {
-    //             throw new AuthenticationError('Username and password do not match, try again')
-    //         }
+            if (!correctPw) {
+                throw new AuthenticationError('Username and password do not match, try again')
+            }
 
-    //         const token = signToken(user)
-    //         return { token, user }
-    //     },
-    //     saveBook: async (parent, args, context) => {
-    //         if (context.user) {
-    //             return User.findOneAndUpdate(
-    //                 { _id: userId },
-    //                 { $addToSet: { savedBooks: body } },
-    //                 { new: true, runValidators: true }
-    //             );
-    //         }
-    //     },
+            const token = signToken(user)
+            return { token, user }
+        },
+        saveBook: async (parent, args, context) => {
+            if (context.user) {
+                return User.findOneAndUpdate(
+                    { _id: user._id },
+                    { $addToSet: { savedBooks: body } },
+                    { new: true, runValidators: true }
+                );
+            }
+        },
 
-    //     removeBook: async (parent, { bookId }, context) => {
-    //         if (context.user) {
-    //             const deletedBook = await User.findOneAndDelete({
-
-    //             })
-    //         }
-    //     },
-    // },
+        removeBook: async (parent, { bookId }, context) => {
+            if (context.user) {
+                const deletedBook = await User.findOneAndDelete({
+                
+                })
+            }
+        },
+    },
 };
 
 module.exports = resolvers;
