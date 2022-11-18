@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+// comment out 'createuser'
+// import { createUser } from '../utils/API';
+
 import { Form, Button, Alert } from 'react-bootstrap';
 
 // import ADD_USER for functionality 
 import { ADD_USER} from '../utils/mutations';
 
-// comment out 'createuser'
-// import { createUser } from '../utils/API';
 import Auth from '../utils/auth';
 
 const SignupForm = () => {
